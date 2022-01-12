@@ -1,0 +1,27 @@
+{
+  "name": "team-profile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsamborski310/Team-Profile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsamborski310/Team-Profile/issues"
+  },
+  "homepage": "https://github.com/jsamborski310/Team-Profile#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
