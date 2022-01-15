@@ -2,7 +2,11 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generateMarkdown = require('./utils/generateMarkdown');
+const employeeMarkdown = require('./lib/Employee');
+const managerMarkdown = require('./lib/Manager');
+const engineerMarkdown = require('./lib/Engineer');
+const internMarkdown = require('./lib/Intern');
+
 
 
 // Array of questions for user input.
@@ -185,25 +189,14 @@ function writeToFile(fileName, data) {
 // Initializing application.
 
 function runApp(data) {
-    // inquirer
-    // .prompt(questions)
-    // .then(function(data) {
-        // writeToFile("./dist/index.html", generateMarkdown(data));
+    
+        writeToFile("./dist/index.html", employeeMarkdown(data));
 
         console.log("Printing");
 
-    // })
 
-    // .catch((error) => {
-    //     if (error.isTtyError) {
-    //       console.log("Prompt couldn't be rendered in the current environment");
-    //     } else {
-    //       console.log("Something went wrong.");
-    //     }
-    //   });
+    
 }
 
 
-
-////////////////////////
-// Not cycling?
+// Build a new constructor on the individual js files: (const Info = New...). If it exists, push it.
