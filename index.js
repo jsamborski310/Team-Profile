@@ -7,129 +7,203 @@ const fs = require('fs');
 
 // Array of questions for user input.
 
-const managerQuestions = [
+const employeeQuestions = [
     {
         type: "input",
-        message: "Provide the title of your application.",
-        name: "title"
+        message: "Provide your first and last name",
+        name: "name"
     },
     {
         type: "input",
-        message: "Describe your application.",
-        name: "description",
+        message: "Enter your employee ID number.",
+        name: "id",
        
     }, 
     {
         type: "input",
-        message: "Provide installation instructions for your application.",
-        name: "installation",
+        message: "What is your email address?",
+        name: "email",
+    }
+];
+
+
+const managerQuestions = [
+    {
+        type: "input",
+        message: "Provide the managers' first and last name",
+        name: "name"
     },
     {
         type: "input",
-        message: "Provide usage information about your application.",
-        name: "usage",
+        message: "Enter managers' employee ID number.",
+        name: "id",
+       
+    }, 
+    {
+        type: "input",
+        message: "What is the managers' email address?",
+        name: "email",
+    },
+    {
+        type: "input",
+        message: "What is the managers' office number?",
+        name: "officeNumber",
     }
 ];
 
 const engineerQuestions = [
     {
         type: "input",
-        message: "Provide the title of your application.",
-        name: "title"
+        message: "Provide the engineers' first and last name",
+        name: "name"
     },
     {
         type: "input",
-        message: "Describe your application.",
-        name: "description",
+        message: "Enter employee ID number.",
+        name: "id",
        
     }, 
     {
         type: "input",
-        message: "Provide installation instructions for your application.",
-        name: "installation",
+        message: "What is the engineers' email address?",
+        name: "email",
     },
     {
         type: "input",
-        message: "Provide usage information about your application.",
-        name: "usage",
+        message: "Enter the engineers' GitHub link.",
+        name: "github",
     }
 ];
 
 const internQuestions = [
     {
         type: "input",
-        message: "Provide the title of your application.",
-        name: "title"
+        message: "Provide the interns' first and last name",
+        name: "name"
     },
     {
         type: "input",
-        message: "Describe your application.",
-        name: "description",
+        message: "Enter employee ID number.",
+        name: "id",
        
     }, 
     {
         type: "input",
-        message: "Provide installation instructions for your application.",
-        name: "installation",
+        message: "What is the interns' email address?",
+        name: "email",
     },
     {
         type: "input",
-        message: "Provide usage information about your application.",
-        name: "usage",
+        message: "What school did the intern attend?",
+        name: "school",
     }
 ];
-
+///////////////
 const nextQuestions = [
     {
-        type: "input",
-        message: "Provide the title of your application.",
-        name: "title"
-    },
-    {
-        type: "input",
-        message: "Describe your application.",
-        name: "description",
-       
-    }, 
-    {
-        type: "input",
-        message: "Provide installation instructions for your application.",
-        name: "installation",
-    },
-    {
-        type: "input",
-        message: "Provide usage information about your application.",
-        name: "usage",
+        type: "checkbox",
+        message: "What would you like to do next? (Select One.)",
+        choices: ["Add Engineer", "Add Intern", "That's a wrap!"],
+        name: "next",
     }
 ];
+///////////////
 
 
-// Writes the README.MD file.
-
-function writeToFile(fileName, data) {
-
-    fs.writeFile(fileName, data, (err) =>
-                err ? console.error(err) : console.log('Your README.md has been successfully generated! Locate it in the Output folder.'))
-
-}
 
 // Initializing application.
 
 function init() {
     inquirer
-    .prompt(questions)
+    .prompt(employeeQuestions)
     .then(function(data) {
-        // writeToFile("./output/README.md", generateMarkdown(data));
-
+       
+        manager();
     })
 
-    .catch((error) => {
-        if (error.isTtyError) {
-          console.log("Prompt couldn't be rendered in the current environment");
-        } else {
-          console.log("Something went wrong.");
-        }
-      });
 }
 
 init();
+
+function manager(data) {
+    inquirer
+    .prompt(managerQuestions)
+    .then(function(data) {
+        
+        nextQuestion();
+         
+    })
+}
+
+
+function engineer(data) {
+    inquirer
+    .prompt(engineerQuestions)
+    .then(function(data) {
+    
+        nextQuestion();
+        
+    })
+}
+
+function intern(data) {
+    inquirer
+    .prompt(internQuestions)
+    .then(function(data) {
+    
+        nextQuestion();
+        
+    })
+}
+
+function nextQuestion(data) {
+    inquirer
+    .prompt(nextQuestions)
+    .then(function(data) {
+       
+        if(data.next.includes("Add Engineer")) {
+            engineer();
+        }
+        else if(data.next.includes("Add Intern")) {
+            intern();
+        }
+        else if(data.next.includes("That's a wrap!")) {
+            return runApp();
+        }
+    })
+}
+
+/////////////////
+
+function writeToFile(fileName, data) {
+
+    fs.writeFile(fileName, data, (err) =>
+                err ? console.error(err) : console.log("Your Team's Profile has been successfully generated! Locate it in the Output folder."))
+
+}
+
+// Initializing application.
+
+function runApp(data) {
+    // inquirer
+    // .prompt(questions)
+    // .then(function(data) {
+        // writeToFile("./dist/index.html", generateMarkdown(data));
+
+        console.log("Printing");
+
+    // })
+
+    // .catch((error) => {
+    //     if (error.isTtyError) {
+    //       console.log("Prompt couldn't be rendered in the current environment");
+    //     } else {
+    //       console.log("Something went wrong.");
+    //     }
+    //   });
+}
+
+
+
+////////////////////////
+// Not cycling?
