@@ -3,10 +3,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const jest = require('jest');
-const employeeMarkdown = require('./lib/Employee');
-const managerMarkdown = require('./lib/Manager');
-const engineerMarkdown = require('./lib/Engineer');
-const internMarkdown = require('./lib/Intern');
+
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
+
 
 
 const officeEmployees = [];
@@ -24,18 +26,18 @@ const managerQuestions = [
     {
         type: "input",
         message: "Enter managers' employee ID number.",
-        name: "id",
+        name: "id"
        
     }, 
     {
         type: "input",
         message: "What is the managers' email address?",
-        name: "email",
+        name: "email"
     },
     {
         type: "input",
         message: "What is the managers' office number?",
-        name: "officeNumber",
+        name: "officeNumber"
     }
 ];
 
@@ -48,18 +50,18 @@ const engineerQuestions = [
     {
         type: "input",
         message: "Enter employee ID number.",
-        name: "id",
+        name: "id"
        
     }, 
     {
         type: "input",
         message: "What is the engineers' email address?",
-        name: "email",
+        name: "email"
     },
     {
         type: "input",
         message: "Enter the engineers' GitHub link.",
-        name: "github",
+        name: "github"
     }
 ];
 
@@ -72,18 +74,18 @@ const internQuestions = [
     {
         type: "input",
         message: "Enter employee ID number.",
-        name: "id",
+        name: "id"
        
     }, 
     {
         type: "input",
         message: "What is the interns' email address?",
-        name: "email",
+        name: "email"
     },
     {
         type: "input",
         message: "What school did the intern attend?",
-        name: "school",
+        name: "school"
     }
 ];
 ///////////////
@@ -92,11 +94,13 @@ const nextQuestions = [
         type: "checkbox",
         message: "What would you like to do next? (Select One.)",
         choices: ["Add Engineer", "Add Intern", "That's a wrap!"],
-        name: "next",
+        name: "next"
     }
 ];
 ///////////////
 
+// manager();
+// runApp();
 
 function manager(data) {
     inquirer
@@ -117,7 +121,7 @@ function manager(data) {
     })
 }
 
-manager();
+
 
 function engineer(data) {
     inquirer
@@ -128,9 +132,10 @@ function engineer(data) {
             data.name,
             data.id,
             data.email,
-            data.officeNumber
-          );
-   
+            // data.getGithub
+           
+          );   
+
         officeEmployees.push(engineer);
        
         nextQuestion();
@@ -147,15 +152,22 @@ function intern(data) {
             data.name,
             data.id,
             data.email,
-            data.school
+            // data.school
           );
    
+
+        console.log(intern.getRole());
+
         officeEmployees.push(intern);
+
 
         nextQuestion();
         
     })
 }
+
+
+
 
 function nextQuestion(data) {
     inquirer
@@ -165,16 +177,16 @@ function nextQuestion(data) {
         if(data.next.includes("Add Engineer")) {
             engineer();
             
-            
-            
         }
         else if(data.next.includes("Add Intern")) {
             intern();
                
-            
         }
         else if(data.next.includes("That's a wrap!")) {
-            return createTeamProfile();
+            // return createTeamProfile();
+            // createTeamProfile();
+            writeToFile("./dist/index.html", createHTML(officeEmployees));
+           
         }
     })
 }
@@ -184,38 +196,160 @@ function createTeamProfile() {
 
         for (var i = 0; i < officeEmployees.length; i++) {
    
-            // console.log(officeEmployees.textContent = `Employee Name: ${officeEmployees[i].name}\n Employee ID: ${officeEmployees[i].id}\n `); 
-            
-            console.log(`Office Employees: ${officeEmployees}`);
-            
+            if(officeEmployees[i].getRole() === Manager) {
+
+                console.log(officeEmployees[i].getRole());
+
+                return `
+                
+                <div class="avatar">
+                <div class="letter-avatar">
+                <h3>JS</h3>
+                </div>
+                <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                <h1>${officeEmployees[i].name}</h1>
+                <h2>${officeEmployees[i].getRole()}<i class="far fa-grin-beam"></i> </h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                <li class="list-group-item">Office Number: <a href="tel:${officeEmployees[i].officeNumber}">${officeEmployees[i].officeNumber}</a></li>
+                </ul>
+                </div>
+                </div>
+                
+                
+                `;
+
+            }
+
+            else if(officeEmployees[i].getRole() === Engineer) {
+
+                console.log(officeEmployees[i].getRole());
+
+                return `
+                
+                <div class="avatar">
+                <div class="letter-avatar">
+                <h3>JS</h3>
+                </div>
+                <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                <h1>${officeEmployees[i].name}</h1>
+                <h2>${officeEmployees[i].getRole()}<i class="far fa-grin-beam"></i> </h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                <li class="list-group-item">${officeEmployees[i].getGithub()}</li>
+                </ul>
+                </div>
+                </div>
+                
+                
+                `;
+
+            }
+
+
+            else if(officeEmployees[i].getRole() === Intern) {
+                console.log(officeEmployees[i].getRole());
+
+                return `
+                
+                <div class="avatar">
+                <div class="letter-avatar">
+                <h3>JS</h3>
+                </div>
+                <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                <h1>${officeEmployees[i].name}</h1>
+                <h2>${officeEmployees[i].getRole()}<i class="far fa-grin-beam"></i> </h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                <li class="list-group-item">School: ${officeEmployees[i].getSchool()}</li>
+                </ul>
+                </div>
+                </div>
+                
+                
+                `;
+
+            } else {
+
+                console.log("Something is wrong.")
+
+            }
+
             
     }
 }
 
+function createHTML(officeEmployees) {
 
 
-/////////////////
+    return `
+    
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+    <link href="/dist/styles.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+    <header>
+    <h1>Our Team</h1>
+    </header>
+
+    <main>
+    <div class="container">
+    <div class="row row-cols-3">
+    ${createTeamProfile(officeEmployees)}
+    </div>
+    </div>
+    </main>
+
+    </body>
+    </html>
+        
+        
+        `;
+
+       
+}
+
 
 function writeToFile(fileName, data) {
 
     fs.writeFile(fileName, data, (err) =>
-                err ? console.error(err) : console.log("Your Team's Profile has been successfully generated! Locate it in the Output folder."))
+                err ? console.error(err) : console.log("Your Team's Profile has been successfully generated! Locate it in the dist folder."));
+
+        // runApp();
+              
 
 }
 
-// Initializing application.
+// function runApp(officeEmployees) {
 
-function runApp(data) {
-    
-        // writeToFile("./dist/index.html", employeeMarkdown(data));
+//     writeToFile("./dist/index.html", createHTML(officeEmployees));
+// }
 
-        console.log("Printing");
+manager();
 
 
-    
-}
-
-// How to pull in getRole based on selection?
-// How is it connecting the employee files into the index.js?
-// Whenever I call it, it appears as not defined. Tried getGihub(), getGithub(Engineer). Also gave it a const. 
-// Constructor displays "new Manager" as undefined.
