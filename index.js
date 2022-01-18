@@ -7,17 +7,10 @@ const jest = require('jest');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const { create } = require('domain');
-
-
 
 
 const officeEmployees = [];
 let officeEmployeesHTML = "";
-
-let managerHTML = "";
-let engineerHTML = "";
-let internHTML = "";
 
 
 // Array of questions for user input.
@@ -105,9 +98,6 @@ const nextQuestions = [
 ];
 ///////////////
 
-// manager();
-// runApp();
-
 function manager(data) {
     inquirer
     .prompt(managerQuestions)
@@ -138,7 +128,7 @@ function engineer(data) {
             data.name,
             data.id,
             data.email,
-            // data.getGithub
+            data.github
            
           );   
 
@@ -158,7 +148,7 @@ function intern(data) {
             data.name,
             data.id,
             data.email,
-            // data.school
+            data.school
           );
    
 
@@ -188,8 +178,7 @@ function nextQuestion(data) {
                
         }
         else if(data.next.includes("That's a wrap!")) {
-            // return createTeamProfile();
-            // createTeamProfile();
+            
             writeToFile("./dist/index.html", createHTML());
            
         }
@@ -198,7 +187,6 @@ function nextQuestion(data) {
 
 function createTeamProfile() {
 
-    // const officeEmployeesHTML = "";
 
         for (var i = 0; i < officeEmployees.length; i++) {
 
@@ -209,12 +197,12 @@ function createTeamProfile() {
                 
                 <div class="avatar">
                 <div class="letter-avatar">
-                <h3>JS</h3>
+                <h3>${officeEmployees[i].getInitial()}</h3>
                 </div>
                 <div class="card" style="width: 18rem;">
-                <div class="card-header">
+                <div class="card-header manager-card-header">
                 <h1>${officeEmployees[i].name}</h1>
-                <h2>${officeEmployees[i].getRole()}<i class="far fa-grin-beam"></i> </h2>
+                <h2>${officeEmployees[i].getRole()}  ${officeEmployees[i].getIcon()} </h2>
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
@@ -227,9 +215,6 @@ function createTeamProfile() {
                 
                 `;
 
-                // return managerHTML;
-                // officeEmployeesHTML.push(managerHTML);
-
             }
 
             else if(officeEmployees[i].getRole() === "Engineer") {
@@ -240,12 +225,12 @@ function createTeamProfile() {
                 
                 <div class="avatar">
                 <div class="letter-avatar">
-                <h3>JS</h3>
+                <h3>${officeEmployees[i].getInitial()}</h3>
                 </div>
                 <div class="card" style="width: 18rem;">
-                <div class="card-header">
+                <div class="card-header engineer-card-header">
                 <h1>${officeEmployees[i].name}</h1>
-                <h2>${officeEmployees[i].getRole()}<i class="far fa-grin-beam"></i> </h2>
+                <h2>${officeEmployees[i].getRole()} ${officeEmployees[i].getIcon()} </h2>
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
@@ -257,14 +242,7 @@ function createTeamProfile() {
                 
                 
                 `;
-
-
-                
-                // return engineerHTML;
-
-                // officeEmployeesHTML.push(engineerHTML);
-
-               
+                  
             }
 
 
@@ -274,12 +252,12 @@ function createTeamProfile() {
                 
                 <div class="avatar">
                 <div class="letter-avatar">
-                <h3>JS</h3>
+                <h3>${officeEmployees[i].getInitial()}</h3>
                 </div>
                 <div class="card" style="width: 18rem;">
-                <div class="card-header">
+                <div class="card-header intern-card-header">
                 <h1>${officeEmployees[i].name}</h1>
-                <h2>${officeEmployees[i].getRole()}<i class="far fa-grin-beam"></i> </h2>
+                <h2>${officeEmployees[i].getRole()} ${officeEmployees[i].getIcon()} </h2>
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
@@ -292,8 +270,6 @@ function createTeamProfile() {
                 
                 `;
 
-                // return internHTML;
-                // officeEmployeesHTML.push(internHTML);
                 
             } else {
 
@@ -309,10 +285,6 @@ function createTeamProfile() {
 
 function createHTML(officeEmployees) {
 
-
-    // for (var i = 0; i < officeEmployeesHTML.length; i++) {
-    //     if(officeEmployeesHTML) {
-    
 
     return `
     
@@ -342,7 +314,7 @@ function createHTML(officeEmployees) {
 
     <main>
     <div class="container">
-    <div class="row row-cols-3">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
     ${createTeamProfile(officeEmployees)}
     </div>
     </div>
@@ -365,15 +337,8 @@ function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
                 err ? console.error(err) : console.log("Your Team's Profile has been successfully generated! Locate it in the dist folder."));
 
-        // runApp();
-              
 
 }
-
-// function runApp(officeEmployees) {
-
-//     writeToFile("./dist/index.html", createHTML(officeEmployees));
-// }
 
 manager();
 

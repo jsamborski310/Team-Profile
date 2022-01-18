@@ -17,12 +17,13 @@ header h1 {
 }
 
 main {
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom:50px;
 }
 
 h1 {
     font-size: 30px;
+    text-transform: capitalize;
 }
 h2 {
     text-transform: uppercase;
@@ -50,13 +51,27 @@ h2 {
 .card-header {
     padding-top:60px;
     padding-bottom:25px;
-    background-color:#d9138a;
     color:#ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
+
+.manager-card-header {
+    background-color: #d9138a;
+}
+
+.engineer-card-header {
+    background-color: #12a4d9;
+}
+
+.intern-card-header {
+    background-color: #e2d810;
+}
+
+
 .avatar {
     z-index:1;
     position: relative;
+    margin-top:100px;
     
 }
 
