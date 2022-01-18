@@ -15,7 +15,6 @@ let officeEmployeesHTML = "";
 
 // Array of questions for user input.
 
-
 const managerQuestions = [
     {
         type: "input",
@@ -87,7 +86,7 @@ const internQuestions = [
         name: "school"
     }
 ];
-///////////////
+
 const nextQuestions = [
     {
         type: "checkbox",
@@ -96,7 +95,10 @@ const nextQuestions = [
         name: "next"
     }
 ];
-///////////////
+
+
+
+// Manager Questions
 
 function manager(data) {
     inquirer
@@ -119,6 +121,8 @@ function manager(data) {
 
 
 
+// Engineer Questions
+
 function engineer(data) {
     inquirer
     .prompt(engineerQuestions)
@@ -139,6 +143,10 @@ function engineer(data) {
     })
 }
 
+
+
+// Intern Questions
+
 function intern(data) {
     inquirer
     .prompt(internQuestions)
@@ -150,8 +158,6 @@ function intern(data) {
             data.email,
             data.school
           );
-   
-
        
         officeEmployees.push(intern);
 
@@ -163,6 +169,8 @@ function intern(data) {
 
 
 
+// Displays the correct set of questions based on User selection. 
+// If nothing else to add, writes index.html
 
 function nextQuestion(data) {
     inquirer
@@ -185,6 +193,9 @@ function nextQuestion(data) {
     })
 }
 
+
+// Creates HTML card depending on employee role.
+
 function createTeamProfile() {
 
 
@@ -206,8 +217,8 @@ function createTeamProfile() {
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
-                <li class="list-group-item">Office Number: <a href="tel:${officeEmployees[i].officeNumber}">${officeEmployees[i].officeNumber}</a></li>
+                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                <li class="list-group-item"><i class="fas fa-phone-volume"></i> <a href="tel:${officeEmployees[i].officeNumber}">${officeEmployees[i].officeNumber}</a></li>
                 </ul>
                 </div>
                 </div>
@@ -234,7 +245,7 @@ function createTeamProfile() {
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
                 <li class="list-group-item">${officeEmployees[i].getGithub()}</li>
                 </ul>
                 </div>
@@ -261,8 +272,8 @@ function createTeamProfile() {
                 </div>
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
-                <li class="list-group-item">School: ${officeEmployees[i].getSchool()}</li>
+                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                <li class="list-group-item"><i class="fas fa-graduation-cap"></i> ${officeEmployees[i].getSchool()}</li>
                 </ul>
                 </div>
                 </div>
@@ -275,13 +286,15 @@ function createTeamProfile() {
 
                 console.log("Something is wrong.")
 
-            }
-
-            
+            }   
     }
 
     return officeEmployeesHTML;
 }
+
+
+
+// Creates full HTML
 
 function createHTML(officeEmployees) {
 
@@ -328,9 +341,10 @@ function createHTML(officeEmployees) {
 
     
 }
-//     }
-// }
 
+
+
+// Sets Up to print HTML
 
 function writeToFile(fileName, data) {
 
@@ -339,6 +353,10 @@ function writeToFile(fileName, data) {
 
 
 }
+
+
+
+// Initializes application with first set of questions. 
 
 manager();
 
