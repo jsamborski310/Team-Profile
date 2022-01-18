@@ -7,11 +7,17 @@ const jest = require('jest');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const { create } = require('domain');
 
 
 
 
 const officeEmployees = [];
+const officeEmployeesHTML = [];
+
+let managerHTML = "";
+let engineerHTML = "";
+let internHTML = "";
 
 
 // Array of questions for user input.
@@ -156,8 +162,7 @@ function intern(data) {
           );
    
 
-        console.log(intern.getRole());
-
+       
         officeEmployees.push(intern);
 
 
@@ -185,7 +190,7 @@ function nextQuestion(data) {
         else if(data.next.includes("That's a wrap!")) {
             // return createTeamProfile();
             // createTeamProfile();
-            writeToFile("./dist/index.html", createHTML(officeEmployees));
+            writeToFile("./dist/index.html", createHTML(officeEmployeesHTML));
            
         }
     })
@@ -195,12 +200,11 @@ function createTeamProfile() {
 
 
         for (var i = 0; i < officeEmployees.length; i++) {
+
    
-            if(officeEmployees[i].getRole() === Manager) {
+            if(officeEmployees[i].getRole() === "Manager") {
 
-                console.log(officeEmployees[i].getRole());
-
-                return `
+                managerHTML = `
                 
                 <div class="avatar">
                 <div class="letter-avatar">
@@ -222,13 +226,16 @@ function createTeamProfile() {
                 
                 `;
 
+                // return managerHTML;
+                officeEmployeesHTML.push(managerHTML);
+
             }
 
-            else if(officeEmployees[i].getRole() === Engineer) {
+            if(officeEmployees[i].getRole() === "Engineer") {
 
-                console.log(officeEmployees[i].getRole());
-
-                return `
+                engineerHTML = 
+                
+                `
                 
                 <div class="avatar">
                 <div class="letter-avatar">
@@ -250,13 +257,17 @@ function createTeamProfile() {
                 
                 `;
 
+                // return engineerHTML;
+
+                officeEmployeesHTML.push(engineerHTML);
+
+               
             }
 
 
-            else if(officeEmployees[i].getRole() === Intern) {
-                console.log(officeEmployees[i].getRole());
+            if(officeEmployees[i].getRole() === "Intern") {
 
-                return `
+                internHTML = `
                 
                 <div class="avatar">
                 <div class="letter-avatar">
@@ -278,6 +289,9 @@ function createTeamProfile() {
                 
                 `;
 
+                // return internHTML;
+                officeEmployeesHTML.push(internHTML);
+                
             } else {
 
                 console.log("Something is wrong.")
@@ -288,8 +302,12 @@ function createTeamProfile() {
     }
 }
 
-function createHTML(officeEmployees) {
+function createHTML(officeEmployeesHTML) {
 
+
+    // for (var i = 0; i < officeEmployeesHTML.length; i++) {
+    //     if(officeEmployeesHTML) {
+    
 
     return `
     
@@ -320,7 +338,7 @@ function createHTML(officeEmployees) {
     <main>
     <div class="container">
     <div class="row row-cols-3">
-    ${createTeamProfile(officeEmployees)}
+    ${createTeamProfile(officeEmployeesHTML)}
     </div>
     </div>
     </main>
@@ -331,8 +349,10 @@ function createHTML(officeEmployees) {
         
         `;
 
-       
+    
 }
+//     }
+// }
 
 
 function writeToFile(fileName, data) {
