@@ -190,7 +190,7 @@ function nextQuestion(data) {
         else if(data.next.includes("That's a wrap!")) {
             // return createTeamProfile();
             // createTeamProfile();
-            writeToFile("./dist/index.html", createHTML(officeEmployeesHTML));
+            writeToFile("./dist/index.html", createHTML());
            
         }
     })
@@ -226,8 +226,8 @@ function createTeamProfile() {
                 
                 `;
 
-                // return managerHTML;
-                officeEmployeesHTML.push(managerHTML);
+                return managerHTML;
+                // officeEmployeesHTML.push(managerHTML);
 
             }
 
@@ -257,9 +257,9 @@ function createTeamProfile() {
                 
                 `;
 
-                // return engineerHTML;
+                return engineerHTML;
 
-                officeEmployeesHTML.push(engineerHTML);
+                // officeEmployeesHTML.push(engineerHTML);
 
                
             }
@@ -289,8 +289,8 @@ function createTeamProfile() {
                 
                 `;
 
-                // return internHTML;
-                officeEmployeesHTML.push(internHTML);
+                return internHTML;
+                // officeEmployeesHTML.push(internHTML);
                 
             } else {
 
@@ -302,7 +302,7 @@ function createTeamProfile() {
     }
 }
 
-function createHTML(officeEmployeesHTML) {
+function createHTML(officeEmployees) {
 
 
     // for (var i = 0; i < officeEmployeesHTML.length; i++) {
@@ -338,7 +338,7 @@ function createHTML(officeEmployeesHTML) {
     <main>
     <div class="container">
     <div class="row row-cols-3">
-    ${createTeamProfile(officeEmployeesHTML)}
+    ${createTeamProfile(officeEmployees)}
     </div>
     </div>
     </main>
