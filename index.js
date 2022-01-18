@@ -13,7 +13,7 @@ const { create } = require('domain');
 
 
 const officeEmployees = [];
-const officeEmployeesHTML = [];
+let officeEmployeesHTML = "";
 
 let managerHTML = "";
 let engineerHTML = "";
@@ -198,13 +198,14 @@ function nextQuestion(data) {
 
 function createTeamProfile() {
 
+    // const officeEmployeesHTML = "";
 
         for (var i = 0; i < officeEmployees.length; i++) {
 
    
             if(officeEmployees[i].getRole() === "Manager") {
 
-                managerHTML = `
+                officeEmployeesHTML += `
                 
                 <div class="avatar">
                 <div class="letter-avatar">
@@ -226,14 +227,14 @@ function createTeamProfile() {
                 
                 `;
 
-                return managerHTML;
+                // return managerHTML;
                 // officeEmployeesHTML.push(managerHTML);
 
             }
 
-            if(officeEmployees[i].getRole() === "Engineer") {
+            else if(officeEmployees[i].getRole() === "Engineer") {
 
-                engineerHTML = 
+                officeEmployeesHTML += 
                 
                 `
                 
@@ -257,7 +258,9 @@ function createTeamProfile() {
                 
                 `;
 
-                return engineerHTML;
+
+                
+                // return engineerHTML;
 
                 // officeEmployeesHTML.push(engineerHTML);
 
@@ -265,9 +268,9 @@ function createTeamProfile() {
             }
 
 
-            if(officeEmployees[i].getRole() === "Intern") {
+            else if(officeEmployees[i].getRole() === "Intern") {
 
-                internHTML = `
+                officeEmployeesHTML += `
                 
                 <div class="avatar">
                 <div class="letter-avatar">
@@ -289,7 +292,7 @@ function createTeamProfile() {
                 
                 `;
 
-                return internHTML;
+                // return internHTML;
                 // officeEmployeesHTML.push(internHTML);
                 
             } else {
@@ -300,6 +303,8 @@ function createTeamProfile() {
 
             
     }
+
+    return officeEmployeesHTML;
 }
 
 function createHTML(officeEmployees) {
