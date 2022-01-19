@@ -1,40 +1,49 @@
-const { it } = require("jest-circus");
 const Employee = require("../lib/Employee");
-
-
- //Methods
 
 describe("Employee", () => {
 
+    const name = "Juanita Samborski";
+    const id = 23;
+    const email = "juanita@breakthroughwebsite.com";
+   
+    const employee = new Employee(name, id, email);
 
-     // Testing of object properties after constructing a new object.
-     it("should build with prop X when given y", ()=>{
 
-    })
+        describe("getName",() => {
 
-    describe("getName",() => {
+            it("Should return the employee name", () => {
+                expect(employee.name).toBe(name);
 
-        // Arrange
-        // Create a new Employee object
+            })
+        });
 
-        // Act
-        // Call the getName method and store the result
 
-        // Assert
-        // The result is equal to an expected value
+        describe("getID",() => {
+
+            it("Should return the employee ID number", () => {
+                expect(employee.id).toBe(id);
+
+            })
+        });
+
+        describe("getEmail",() => {
+
+            it("Should return the employee email address", () => {
+                expect(employee.email).toBe(email);
+
+            })
+        });
+
+
+
+        describe("getRole",() => {
+
+            it("Should return 'Employee'", () =>{
+                expect(employee.getRole()).toBe("Employee");
+
+            })
+        });
 
     });
 
-    describe("getID",() => {
 
-    });
-
-    describe("getEmail",() => {
-
-    });
-
-    describe("getRole",() => {
-
-    });
-
-});
