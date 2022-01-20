@@ -207,6 +207,7 @@ function createTeamProfile() {
 
                 officeEmployeesHTML += `
                 
+                <div class="my-card-body">
                 <div class="avatar">
                 <div class="letter-avatar">
                 <h3>${officeEmployees[i].getInitial()}</h3>
@@ -223,6 +224,7 @@ function createTeamProfile() {
                 </ul>
                 </div>
                 </div>
+                </div>
                 
                 
                 `;
@@ -234,7 +236,7 @@ function createTeamProfile() {
                 officeEmployeesHTML += 
                 
                 `
-                
+                <div class="my-card-body">
                 <div class="avatar">
                 <div class="letter-avatar">
                 <h3>${officeEmployees[i].getInitial()}</h3>
@@ -251,6 +253,7 @@ function createTeamProfile() {
                 </ul>
                 </div>
                 </div>
+                </div>
                 
                 
                 `;
@@ -262,6 +265,7 @@ function createTeamProfile() {
 
                 officeEmployeesHTML += `
                 
+                <div class="my-card-body">
                 <div class="avatar">
                 <div class="letter-avatar">
                 <h3>${officeEmployees[i].getInitial()}</h3>
@@ -276,6 +280,7 @@ function createTeamProfile() {
                 <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
                 <li class="list-group-item"><i class="fas fa-graduation-cap"></i> ${officeEmployees[i].getSchool()}</li>
                 </ul>
+                </div>
                 </div>
                 </div>
                 
@@ -327,7 +332,7 @@ function createHTML(officeEmployees) {
     </header>
 
     <main>
-    <div class="container">
+    <div class="container d-flex justify-content-center">
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
     ${createTeamProfile(officeEmployees)}
     </div>

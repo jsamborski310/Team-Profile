@@ -40,6 +40,14 @@ a {
     color:black;
 }
 
+/* LAYOUT */
+
+.my-card-body {
+    display: flex;
+    justify-content: center;
+
+}
+
 /* CARD */
 
 .card {
