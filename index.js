@@ -188,6 +188,7 @@ function nextQuestion(data) {
         else if(data.next.includes("That's a wrap!")) {
             
             writeToFile("./dist/index.html", createHTML());
+            // writeToFile("sample.html", createHTML());
             
            
         }
