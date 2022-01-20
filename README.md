@@ -52,7 +52,7 @@ After all of the questions are answered, an index.html will be generated in the 
 A sample test has been generated. Check out the sample.html in the root. 
 
 ![Screen shot of team profile desktop view.](dist/images/Team-Profile.png)
-![Screen shot of team profile mobile responsive view.](dist/images/Team-Profile-MobileResponsive.png)
+<img src="dist/images/Team-Profile-MobileResponsive.png" width="50%" height="auto" alt="Screen shot of team profile mobile responsive view.">
 
 
 
