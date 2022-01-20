@@ -188,7 +188,6 @@ function nextQuestion(data) {
         else if(data.next.includes("That's a wrap!")) {
             
             writeToFile("./dist/index.html", createHTML());
-            // writeToFile("sample.html", createHTML());
             
            
         }
@@ -209,22 +208,22 @@ function createTeamProfile() {
                 officeEmployeesHTML += `
                 
                 <div class="my-card-body">
-                <div class="avatar">
-                <div class="letter-avatar">
-                <h3>${officeEmployees[i].getInitial()}</h3>
-                </div>
-                <div class="card" style="width: 18rem;">
-                <div class="card-header manager-card-header">
-                <h1>${officeEmployees[i].name}</h1>
-                <h2>${officeEmployees[i].getRole()}  ${officeEmployees[i].getIcon()} </h2>
-                </div>
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
-                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
-                <li class="list-group-item"><i class="fas fa-phone-volume"></i> <a href="tel:${officeEmployees[i].officeNumber}">${officeEmployees[i].officeNumber}</a></li>
-                </ul>
-                </div>
-                </div>
+                    <div class="avatar">
+                        <div class="letter-avatar">
+                            <h3>${officeEmployees[i].getInitial()}</h3>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header manager-card-header">
+                                <h1>${officeEmployees[i].name}</h1>
+                                <h2>${officeEmployees[i].getRole()}  ${officeEmployees[i].getIcon()}</h2>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
+                                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                                <li class="list-group-item"><i class="fas fa-phone-volume"></i> <a href="tel:${officeEmployees[i].officeNumber}">${officeEmployees[i].officeNumber}</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 
@@ -238,24 +237,24 @@ function createTeamProfile() {
                 
                 `
                 <div class="my-card-body">
-                <div class="avatar">
-                <div class="letter-avatar">
-                <h3>${officeEmployees[i].getInitial()}</h3>
+                    <div class="avatar">
+                        <div class="letter-avatar">
+                            <h3>${officeEmployees[i].getInitial()}</h3>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header engineer-card-header">
+                                <h1>${officeEmployees[i].name}</h1>
+                                <h2>${officeEmployees[i].getRole()} ${officeEmployees[i].getIcon()} </h2>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
+                                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                                <li class="list-group-item">${officeEmployees[i].getGithub()}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                <div class="card-header engineer-card-header">
-                <h1>${officeEmployees[i].name}</h1>
-                <h2>${officeEmployees[i].getRole()} ${officeEmployees[i].getIcon()} </h2>
-                </div>
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
-                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
-                <li class="list-group-item">${officeEmployees[i].getGithub()}</li>
-                </ul>
-                </div>
-                </div>
-                </div>
-                
+
                 
                 `;
                   
@@ -267,22 +266,22 @@ function createTeamProfile() {
                 officeEmployeesHTML += `
                 
                 <div class="my-card-body">
-                <div class="avatar">
-                <div class="letter-avatar">
-                <h3>${officeEmployees[i].getInitial()}</h3>
-                </div>
-                <div class="card" style="width: 18rem;">
-                <div class="card-header intern-card-header">
-                <h1>${officeEmployees[i].name}</h1>
-                <h2>${officeEmployees[i].getRole()} ${officeEmployees[i].getIcon()} </h2>
-                </div>
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
-                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
-                <li class="list-group-item"><i class="fas fa-graduation-cap"></i> ${officeEmployees[i].getSchool()}</li>
-                </ul>
-                </div>
-                </div>
+                    <div class="avatar">
+                        <div class="letter-avatar">
+                            <h3>${officeEmployees[i].getInitial()}</h3>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header intern-card-header">
+                                <h1>${officeEmployees[i].name}</h1>
+                                <h2>${officeEmployees[i].getRole()} ${officeEmployees[i].getIcon()} </h2>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID: ${officeEmployees[i].id}</li>
+                                <li class="list-group-item"><i class="fas fa-envelope"></i> <a href="mailto:${officeEmployees[i].email}">${officeEmployees[i].email}</a></li>
+                                <li class="list-group-item"><i class="fas fa-graduation-cap"></i> ${officeEmployees[i].getSchool()}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 
@@ -312,33 +311,34 @@ function createHTML(officeEmployees) {
     <html lang="en">
 
     <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Profile</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Team Profile</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-    <link href="/dist/styles.css" rel="stylesheet">
+        <link href="/dist/styles.css" rel="stylesheet">
 
     </head>
 
     <body>
 
-    <header>
-    <h1>Our Team</h1>
-    </header>
+        <header>
+            <h1>Our Team</h1>
+        </header>
 
-    <main>
-    <div class="container d-flex justify-content-center">
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
-    ${createTeamProfile(officeEmployees)}
-    </div>
-    </div>
-    </main>
+        <main>
+            <div class="container d-flex justify-content-center">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+                    ${createTeamProfile(officeEmployees)}
+                </div>
+            </div>
+        </main>
 
     </body>
     </html>
